@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Resume Screening{% endblock %}
+
+{% block content %}
+    <div class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>NLP-Powered Resume Screening</h1>
+            <p>Upload your resume and get insights on ATS score, skills, experience, and more.</p>
+            <a href="{{ url_for('main.upload_resume') }}" class="btn">Get Started</a>
+        </div>
+    </div>
+
+    <!-- ✅ Quick Navigation Section -->
+    <div class="quick-links">
+        <a href="{{ url_for('main.about') }}" class="link-card">About</a>
+        <a href="{{ url_for('main.upload_resume') }}" class="link-card">Upload Resume</a>
+        <a href="{{ url_for('main.result') }}" class="link-card">Results</a> <!-- ✅ Added Results Link -->
+        <a href="{{ url_for('main.top_resumes') }}" class="link-card">Top Resumes</a>
+        <a href="{{ url_for('main.dashboard') }}" class="link-card">Dashboard</a>
+        <a href="{{ url_for('main.contact') }}" class="link-card">Contact</a>
+        <a href="{{ url_for('main.help_page') }}" class="link-card">Help</a>
+    </div>
+
+    <!-- ✅ Recent Resume Results Section -->
+    <div class="results-section">
+        <h2>Recent Resume Results</h2>
+        {% if session["top_resumes"] %}
+            <table>
+                <tr>
+                    <th>Filename</th>
+                    <th>ATS Score</th>
+                    <th>Experience</th>
+                </tr>
+                {% for resume in session["top_resumes"][:5] %}
+                <tr>
+                    <td>{{ resume.filename }}</td>
+                    <td>{{ resume.ats_score }}</td>
+                    <td>{{ resume.experience }} years</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No resumes analyzed yet. <a href="{{ url_for('main.upload_resume') }}">Upload one now!</a></p>
+        {% endif %}
+    </div>
+{% endblock %}

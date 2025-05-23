@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Certifications & Training{% endblock %}
+
+{% block content %}
+    <div class="certifications-container">
+        <h1>Certifications & Training</h1>
+        {% if resumes %}
+            <ul>
+                {% for resume in resumes %}
+                    <li><strong>{{ resume.filename }}</strong>: {{ ", ".join(resume.certifications) }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No certifications found.</p>
+        {% endif %}
+    </div>
+{% endblock %}

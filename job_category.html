@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Job Category Prediction{% endblock %}
+
+{% block content %}
+    <div class="job-category-container">
+        <h1>Predicted Job Categories</h1>
+        {% if resumes %}
+            <table class="feature-table">
+                <thead>
+                    <tr><th>Filename</th><th>Job Category</th></tr>
+                </thead>
+                <tbody>
+                    {% for resume in resumes %}
+                        <tr>
+                            <td>{{ resume.filename }}</td>
+                            <td>{{ resume.job_category }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No resumes available.</p>
+        {% endif %}
+    </div>
+{% endblock %}

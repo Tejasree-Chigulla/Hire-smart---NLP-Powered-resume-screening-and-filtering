@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Salary Prediction{% endblock %}
+
+{% block content %}
+    <div class="salary-container">
+        <h1>Salary Prediction</h1>
+        {% if resumes %}
+            <table class="feature-table">
+                <thead>
+                    <tr><th>Filename</th><th>Estimated Salary ($)</th></tr>
+                </thead>
+                <tbody>
+                    {% for resume in resumes %}
+                        <tr>
+                            <td>{{ resume.filename }}</td>
+                            <td>${{ resume.salary_prediction }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No resumes available.</p>
+        {% endif %}
+    </div>
+{% endblock %}

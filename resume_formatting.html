@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Resume Formatting Score{% endblock %}
+
+{% block content %}
+    <div class="formatting-container">
+        <h1>Resume Formatting Score</h1>
+        {% if resumes %}
+            <table class="feature-table">
+                <thead>
+                    <tr><th>Filename</th><th>Formatting Score (%)</th></tr>
+                </thead>
+                <tbody>
+                    {% for resume in resumes %}
+                        <tr>
+                            <td>{{ resume.filename }}</td>
+                            <td>{{ resume.resume_relevance }}%</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No resumes available.</p>
+        {% endif %}
+    </div>
+{% endblock %}
