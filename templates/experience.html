@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Experience Analysis{% endblock %}
+
+{% block content %}
+    <div class="experience-container">
+        <h1>Experience (Years)</h1>
+        {% if resumes %}
+            <table class="feature-table">
+                <thead>
+                    <tr><th>Filename</th><th>Experience (Years)</th></tr>
+                </thead>
+                <tbody>
+                    {% for resume in resumes %}
+                        <tr>
+                            <td>{{ resume.filename }}</td>
+                            <td>{{ resume.experience }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No resumes available.</p>
+        {% endif %}
+    </div>
+{% endblock %}
