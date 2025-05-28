@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - ResumeScreenAI{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-overlay"></div> <!-- Dark overlay layer -->
+    <div class="hero-content">
+        <h1>Powerful Resume Screening With AI.</h1>
+        <p>Upload, analyze, and find the best resumes instantly.</p>
+        <a href="{{ url_for('main.upload_resume') }}" class="btn-primary">Get Started</a>
+    </div>
+</section>
+
+<section class="features">
+    <div class="feature-card">
+        <h3>📄 ATS Score</h3>
+        <p>Analyze resumes and generate ATS-friendly scores.</p>
+    </div>
+    <div class="feature-card">
+        <h3>💼 Job Category</h3>
+        <p>Predict the best job category for candidates.</p>
+    </div>
+    <div class="feature-card">
+        <h3>🔍 Skills Extraction</h3>
+        <p>Extract key skills from uploaded resumes.</p>
+    </div>
+    <div class="feature-card">
+        <h3>💰 Salary Prediction</h3>
+        <p>Estimate salary based on job roles.</p>
+    </div>
+</section>
+
+<!-- Overlay and Highlight Box -->
+<div id="dimOverlay" class="dim-overlay" style="display: none;"></div>
+<div id="highlightBox" class="highlight-box" style="display: none;">
+    <p>Let’s start screening resumes with AI!</p>
+</div>
+
+{% endblock %}

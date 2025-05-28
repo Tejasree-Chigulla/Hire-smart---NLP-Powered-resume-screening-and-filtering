@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Top Resumes - Resume Screening{% endblock %}
+
+{% block content %}
+    <h1>🏆 Top 7 Resumes</h1>
+
+    {% if resumes %}
+        <table border="1">
+            <tr>
+                <th>Rank</th>
+                <th>Filename</th>
+                <th>ATS Score</th>
+                <th>Experience</th>
+                <th>Predicted Salary</th>
+                <th>Skills</th>
+                <th>Job Category</th>
+            </tr>
+            {% for resume in resumes[:7] %}  <!-- Display only Top 7 -->
+            <tr style="background-color: #f0f8ff; font-weight: bold;">
+                <td>#{{ loop.index }}</td>
+                <td>{{ resume.filename }}</td>
+                <td>{{ resume.ats_score }}</td>
+                <td>{{ resume.experience }} years</td>
+                <td>${{ resume.salary_prediction }}</td>
+                <td>{{ ", ".join(resume.skills) }}</td>
+                <td>{{ resume.job_category }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h2>📄 All Processed Resumes</h2>
+        <table border="1">
+            <tr>
+                <th>Filename</th>
+                <th>ATS Score</th>
+                <th>Experience</th>
+                <th>Predicted Salary</th>
+                <th>Skills</th>
+                <th>Job Category</th>
+                <th>Education</th>
+                <th>Certifications</th>
+                <th>Projects</th>
+            </tr>
+            {% for resume in resumes %}  <!-- Show all resumes with details -->
+            <tr>
+                <td>{{ resume.filename }}</td>
+                <td>{{ resume.ats_score }}</td>
+                <td>{{ resume.experience }} years</td>
+                <td>${{ resume.salary_prediction }}</td>
+                <td>{{ ", ".join(resume.skills) }}</td>
+                <td>{{ resume.job_category }}</td>
+                <td>{{ resume.education }}</td>
+                <td>{{ ", ".join(resume.certifications) }}</td>
+                <td>{{ ", ".join(resume.projects) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No resumes found. Please <a href="{{ url_for('main.upload_resume') }}">upload a resume</a>.</p>
+    {% endif %}
+{% endblock %}
