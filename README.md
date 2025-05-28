@@ -1,1 +1,0 @@
-# Hire-smart---NLP-Powered-resume-screening-and-filtering
