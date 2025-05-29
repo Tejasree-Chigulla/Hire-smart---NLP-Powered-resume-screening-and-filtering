@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Education Level{% endblock %}
+
+{% block content %}
+    <div class="education-container">
+        <h1>Education Level</h1>
+        {% if resumes %}
+            <table class="feature-table">
+                <thead>
+                    <tr><th>Filename</th><th>Education Level</th></tr>
+                </thead>
+                <tbody>
+                    {% for resume in resumes %}
+                        <tr>
+                            <td>{{ resume.filename }}</td>
+                            <td>{{ resume.education }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No resumes available.</p>
+        {% endif %}
+    </div>
+{% endblock %}
